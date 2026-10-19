@@ -40,27 +40,27 @@ footer{text-align:center;color:#7189a4;font-size:17px;margin:30px 0 0}
 </head>
 <body>
 <main>
-  <div class="topbar"><span class="brand">BFF.EXE<br>PIXEL EDITION</span><span>PLAYER 02: KOALA 🐨</span></div>
+  <div class="topbar"><span class="brand">BFF.EXE<br>UNIQUE EDITION FOR U</span><span>PLAYER 1910: KOALA 🐨</span></div>
   <div class="progress" aria-label="Tiến trình nhiệm vụ"><div class="bar" id="progressBar"></div></div>
 
   <section class="screen" id="welcome">
     <div class="pixelbox center">
       <div class="eyebrow">★ INCOMING QUEST ★</div>
       <div class="pixel-art">🌙 🐿️ 🐨</div>
-      <h1>HAPPY LEVEL-UP,<br>PHƯƠNG UYÊN!</h1>
+      <h1>HAPPY LEVEL-UP,<br>PHUONG UYEN!</h1>
       <p>Xin chào, Koala.</p>
       <p>Một nhiệm vụ bí mật đã được gửi đến từ <b style="color:var(--ice)">Sóc</b>.</p>
       <p class="small">Có ký ức cần khôi phục. Có bí mật cần mở khóa. Và có một món quà đang chờ ở cuối hành trình.</p>
-      <div class="photo-placeholder">[ PLACEHOLDER ẢNH BÌA ]<br>Thay bằng ảnh của hai đứa nếu muốn ✦</div>
-      <p class="eyebrow">READY, PLAYER TWO?</p>
+      <img src="h16 (13).jpg" alt="Ảnh bìa" width="100%">
+      <p class="eyebrow">READY, PLAYER 1910?</p>
       <div class="actions"><button onclick="go('quiz',1)">▶ START GAME</button></div>
     </div>
   </section>
 
   <section class="screen hidden" id="quiz">
     <div class="pixelbox">
-      <div class="eyebrow">LEVEL 01 / MEMORY CHECK</div><h2>KIỂM TRA DỮ LIỆU KỶ NIỆM</h2>
-      <p>Koala, trả lời mấy câu hỏi chỉ người trong cuộc mới biết nha. Đây là bản mẫu — Sóc có thể sửa câu hỏi và đáp án trong file HTML.</p>
+      <div class="eyebrow">LEVEL 01 / MEMORY CHECK</div><h2>KIEM TRA DU LIEU KY NIEM</h2>
+      <p>Xin mời Koala trả lời các câu hỏi sau đây của Sóc nhaa.</p>
       <div id="questionArea"></div>
       <p id="quizFeedback" aria-live="polite"></p>
       <div class="actions"><button class="secondary" id="nextQ" onclick="nextQuestion()" disabled>TIẾP TỤC →</button></div>
@@ -69,7 +69,7 @@ footer{text-align:center;color:#7189a4;font-size:17px;margin:30px 0 0}
 
   <section class="screen hidden" id="doors">
     <div class="pixelbox">
-      <div class="eyebrow">LEVEL 02 / PICK YOUR CHAOS</div><h2>CHỌN MỘT CÁNH CỬA</h2>
+      <div class="eyebrow">LEVEL 02 / PICK YOUR CHAOS</div><h2>CHON MOT CANH CUA</h2>
       <p>Mỗi cánh cửa chứa một kiểu bất ngờ. Chọn theo trực giác đi Koala 👀</p>
       <button class="choice" onclick="openDoor('A')">[ A ] THE CRIME SCENE — ảnh dìm kinh điển 📸</button>
       <button class="choice" onclick="openDoor('B')">[ B ] THE MEMORY VAULT — ký ức cũ 📼</button>
@@ -92,7 +92,7 @@ footer{text-align:center;color:#7189a4;font-size:17px;margin:30px 0 0}
       <hr class="hr">
       <label for="memory">Điền một kỷ niệm mà Koala nhớ nhất:</label>
       <textarea id="memory" rows="3" placeholder="Gõ câu trả lời ở đây..."></textarea>
-      <p class="small">Phần này chỉ hiện trên thiết bị của người chơi trong lúc mở trang; câu trả lời không tự gửi về cho Sóc.</p>
+      <p class="small">Tôi yêu cầu em ghi kỉ niệm đáng nhớ nhất vào cho tôi!</p>
       <div class="photo-placeholder">[ PLACEHOLDER ALBUM ẢNH ]<br>Thay bằng ảnh hoặc ảnh ghép của hai đứa</div>
       <div class="actions"><button onclick="go('letter',4)">OPEN FINAL FILE →</button></div>
     </div>
