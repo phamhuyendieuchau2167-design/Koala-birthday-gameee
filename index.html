@@ -121,7 +121,7 @@ footer{text-align:center;color:#7189a4;font-size:17px;margin:30px 0 0}
       <h2>YOU DID IT, KOALA!</h2>
       <p>Toàn bộ nhiệm vụ đã hoàn thành.</p>
       <p>Phần thưởng cuối cùng đang chờ mày nè.</p>
-      <img src="ten-anh-cua-may.jpg" alt="Ảnh bìa" width="100%">
+      <img src="t1.png" alt="Ảnh bìa" width="100%">
       <p><b>SECRET GIFT:</b></p>
       <p id="giftText">Một buổi đi chơi với Sóccc <3</p>
       <div class="actions"><button onclick="confetti()">🎉 CLAIM REWARD</button><button class="secondary" onclick="restart()">↻ PLAY AGAIN</button></div>
@@ -133,17 +133,26 @@ footer{text-align:center;color:#7189a4;font-size:17px;margin:30px 0 0}
 <div id="toast" class="hidden" role="status"></div>
 <script>
 const questions = [
- {q:"Câu 1: Lần đầu hai đứa thân hơn là nhờ chuyện gì?", choices:["Một vụ drama trời ơi đất hỡi","Một lần học/làm chung","Một tình huống không ai ngờ"], answer:0, note:"Sửa lựa chọn và đáp án trong mảng questions ở cuối file nhé."},
- {q:"Câu 2: Biệt danh của người chơi là gì?", choices:["Koala 🐨","Cá nóc 🐡","Mèo mun 🐈‍⬛"], answer:0, note:"Đúng rồi, Koala là Koala!"},
- {q:"Câu 3: Ai là đồng bọn chính thức của Koala?", choices:["Sóc 🐿️","Một con cá","Hệ điều hành Windows"], answer:0, note:"Một đáp án quá dễ với người chơi này."}
+ {q:"Câu 1: Hai đứa bắt đầu chơi với nhau khi nào?", choices:["Hồi lớp 4","Lớp Six","Khom nhớ nữaaa"], answer:0, note:"Sửa lựa chọn và đáp án trong mảng questions ở cuối file nhé."},
+ {q:"Câu 2: Biệt danh của mày là gì?", choices:["Koala 🐨","Cá nóc 🐡","Mèo mun 🐈‍⬛"], answer:0, note:"Đúng rồi, Koala là Koala!"},
+ {q:"Câu 3: Ai là đồng bọn chính thức của Koala?", choices:["Sóc 🐿️","Một con cá","Con chimm"], answer:0, note:"Một đáp án quá dễ với người chơi này."}
 ];
 let qi=0, answered=false, completed=0;
 function go(id,step){document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.getElementById('progressBar').style.width=(step/5*100)+'%';window.scrollTo({top:0,behavior:'smooth'});if(id==='quiz')renderQuestion();}
 function renderQuestion(){answered=false;document.getElementById('nextQ').disabled=true;document.getElementById('quizFeedback').textContent='';let q=questions[qi];let area=document.getElementById('questionArea');area.innerHTML='<h3>QUESTION '+(qi+1)+' / '+questions.length+'</h3><p>'+q.q+'</p>';q.choices.forEach((c,i)=>{let b=document.createElement('button');b.className='choice';b.textContent=String.fromCharCode(65+i)+'. '+c;b.onclick=()=>answer(i);area.appendChild(b);});}
-function answer(i){if(answered)return;answered=true;let q=questions[qi];document.querySelectorAll('#questionArea button').forEach(b=>b.disabled=true);let ok=i===q.answer;document.getElementById('quizFeedback').textContent=ok?'✓ CORRECT! MEMORY RESTORED. 💙':'✦ Đã ghi nhận đáp án! Hỏi Sóc xem đáp án chuẩn nha 😆';document.getElementById('nextQ').disabled=false;document.getElementById('nextQ').textContent=qi===questions.length-1?'OPEN NEXT LEVEL →':'NEXT QUESTION →';}
+function answer(i){if(answered)return;answered=true;let q=questions[qi];document.querySelectorAll('#questionArea button').forEach(b=>b.disabled=true);let ok=i===q.answer;document.getElementById('quizFeedback').textContent=ok?'✓ CORRECT! MEMORY RESTORED. 💙':'✦ Ròi, sai luôngg =<<';document.getElementById('nextQ').disabled=false;document.getElementById('nextQ').textContent=qi===questions.length-1?'OPEN NEXT LEVEL →':'NEXT QUESTION →';}
 function nextQuestion(){if(qi<questions.length-1){qi++;renderQuestion()}else{go('doors',2)}}
-function openDoor(which){let content={A:'📸 THE CRIME SCENE<br><br>[ THAY BẰNG ẢNH DÌM CỦA HAI ĐỨA ]<br>Chú thích: “Bằng chứng không thể chối cãi.”',B:'📼 THE MEMORY VAULT<br><br>[ THAY BẰNG ẢNH / SCREENSHOT KỶ NIỆM ]<br>Chú thích: “Mày còn nhớ ngày này không?”',C:'🗂️ THE ROAST FILE<br><br>HỒ SƠ KOALA: đáng yêu nhưng hay báo đời; độ thân thiết với Sóc: không thể cứu chữa. [ SỬA THÀNH CÂU ĐÙA RIÊNG CỦA HAI ĐỨA ]'};let el=document.getElementById('doorReveal');el.innerHTML=content[which];el.classList.remove('hidden');document.getElementById('doorsNext').disabled=false;}
-function confetti(){document.getElementById('rewardMessage').textContent='🎉 ACHIEVEMENT UNLOCKED: BEST FRIEND FOREVER. Chụp màn hình này lại nha, Koala!';toast('REWARD CLAIMED 💙');}
+function openDoor(which){
+  let content = {
+    A: '📸 THE LOVELY SCENE<br><br><img src="h16 (10).jpg" alt="Ảnh cute" width="100%"><br>Chú thích: “Tui hun bà nèee. Lêu Lêu.”',
+    B: '📼 THE MEMORY VAULT<br><br><img src="h16 (12).jpg" alt="Ảnh kỷ niệm" width="100%"><br>Chú thích: “Đi chơi Aeon nà”',
+    C: '🗂️ THE ROAST FILE<br><br><img src="h16 (15).jpg" alt="Ảnh vui" width="100%"><br>HỒ SƠ KOALA: đáng yêu nhưng hay báo đời; độ thân thiết với Sóc:không thể cứu chữa.'
+  };
+  let el = document.getElementById('doorReveal');
+  el.innerHTML = content[which];
+  el.classList.remove('hidden');
+  document.getElementById('doorsNext').disabled = false;
+}function confetti(){document.getElementById('rewardMessage').textContent='🎉 ACHIEVEMENT UNLOCKED: BEST FRIEND FOREVER. Chụp màn hình này lại nha, Koala!';toast('REWARD CLAIMED 💙');}
 function restart(){qi=0;go('welcome',0)}
 function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),2200)}
 </script>
