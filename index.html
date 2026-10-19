@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071426">
+<title>BFF.exe — Sóc × Koala</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+:root{--navy:#071426;--panel:#0d2038;--panel2:#102944;--silver:#cbd8e6;--muted:#8197b2;--ice:#78d9ff;--pink:#d7c7ff;--line:#294662;--good:#a7f3d0}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top,#173656 0,#071426 55%,#030914 100%);color:var(--silver);font-family:'VT323',monospace;font-size:22px;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(120,217,255,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(120,217,255,.15) 1px,transparent 1px);background-size:24px 24px}
+main{width:min(760px,100%);margin:auto;padding:18px 14px 46px;position:relative}
+.topbar{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:18px;color:var(--muted);margin:3px 0 20px}
+.brand{font-family:'Press Start 2P',monospace;font-size:11px;color:var(--ice);line-height:1.8}
+.pixelbox{background:linear-gradient(145deg,rgba(16,41,68,.96),rgba(7,20,38,.98));border:2px solid var(--silver);box-shadow:5px 5px 0 #294662, inset 0 0 0 4px #0a1a2d;border-radius:2px;padding:clamp(17px,4vw,30px);margin:14px 0}
+h1,h2,h3{font-family:'Press Start 2P',monospace;line-height:1.8;color:#f0f6ff}h1{font-size:clamp(18px,4.5vw,28px);margin:8px 0 18px}h2{font-size:clamp(14px,3.5vw,19px);margin:0 0 16px}h3{font-size:12px;color:var(--ice)}
+p{line-height:1.35;margin:12px 0}.small{font-size:18px;color:var(--muted)}.center{text-align:center}
+.eyebrow{font-family:'Press Start 2P',monospace;font-size:9px;color:var(--ice);letter-spacing:1px;line-height:2}
+.pixel-art{font-size:clamp(45px,12vw,82px);filter:drop-shadow(0 0 10px #78d9ff55);margin:16px 0}
+button,.btn{font-family:'VT323',monospace;font-size:24px;color:var(--navy);background:var(--silver);border:0;border-bottom:5px solid #71859c;padding:10px 15px;cursor:pointer;display:inline-block;text-decoration:none;text-align:center;min-height:48px}
+button:hover,.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}button:active{transform:translateY(2px);border-bottom-width:2px}
+button.secondary{background:#15314d;color:var(--silver);border:2px solid #5d7894;border-bottom-width:5px}
+button.choice{display:block;width:100%;text-align:left;margin:9px 0;background:#102944;color:var(--silver);border:2px solid #42617d;border-bottom-width:5px}
+button.choice:hover{border-color:var(--ice)}button:disabled{opacity:.45;cursor:not-allowed}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.actions button{flex:1 1 170px}
+.hidden{display:none!important}.progress{height:12px;border:2px solid #65809a;padding:2px;margin:16px 0}.bar{height:100%;width:0;background:var(--ice);transition:width .3s}
+.badge{display:inline-block;border:1px solid var(--ice);color:var(--ice);padding:4px 8px;font-size:18px;margin:3px}
+.hr{border:0;border-top:1px dashed #47627c;margin:20px 0}
+input,textarea{width:100%;background:#061324;color:var(--silver);border:2px solid #47627c;padding:12px;font:22px 'VT323',monospace;margin:7px 0}
+label{display:block;color:var(--ice);font-size:19px;margin-top:12px}
+.photo-placeholder{border:2px dashed #6c87a3;min-height:140px;display:grid;place-items:center;text-align:center;padding:18px;color:var(--muted);background:#07182a;margin:14px 0}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{border:1px solid #47627c;padding:14px;background:#08192b}.stat strong{display:block;font-family:'Press Start 2P';font-size:12px;color:var(--ice);line-height:1.8}
+footer{text-align:center;color:#7189a4;font-size:17px;margin:30px 0 0}
+#toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#dbeafe;color:#071426;padding:10px 16px;z-index:10;box-shadow:4px 4px #42617d;max-width:90%;text-align:center}
+@media(max-width:480px){main{padding:12px 12px 32px}.topbar{font-size:16px}.stats{grid-template-columns:1fr 1fr}.stat{padding:10px}.stat strong{font-size:10px}.pixelbox{padding:18px 15px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+  <div class="topbar"><span class="brand">BFF.EXE<br>PIXEL EDITION</span><span>PLAYER 02: KOALA 🐨</span></div>
+  <div class="progress" aria-label="Tiến trình nhiệm vụ"><div class="bar" id="progressBar"></div></div>
+
+  <section class="screen" id="welcome">
+    <div class="pixelbox center">
+      <div class="eyebrow">★ INCOMING QUEST ★</div>
+      <div class="pixel-art">🌙 🐿️ 🐨</div>
+      <h1>HAPPY LEVEL-UP,<br>PHƯƠNG UYÊN!</h1>
+      <p>Xin chào, Koala.</p>
+      <p>Một nhiệm vụ bí mật đã được gửi đến từ <b style="color:var(--ice)">Sóc</b>.</p>
+      <p class="small">Có ký ức cần khôi phục. Có bí mật cần mở khóa. Và có một món quà đang chờ ở cuối hành trình.</p>
+      <div class="photo-placeholder">[ PLACEHOLDER ẢNH BÌA ]<br>Thay bằng ảnh của hai đứa nếu muốn ✦</div>
+      <p class="eyebrow">READY, PLAYER TWO?</p>
+      <div class="actions"><button onclick="go('quiz',1)">▶ START GAME</button></div>
+    </div>
+  </section>
+
+  <section class="screen hidden" id="quiz">
+    <div class="pixelbox">
+      <div class="eyebrow">LEVEL 01 / MEMORY CHECK</div><h2>KIỂM TRA DỮ LIỆU KỶ NIỆM</h2>
+      <p>Koala, trả lời mấy câu hỏi chỉ người trong cuộc mới biết nha. Đây là bản mẫu — Sóc có thể sửa câu hỏi và đáp án trong file HTML.</p>
+      <div id="questionArea"></div>
+      <p id="quizFeedback" aria-live="polite"></p>
+      <div class="actions"><button class="secondary" id="nextQ" onclick="nextQuestion()" disabled>TIẾP TỤC →</button></div>
+    </div>
+  </section>
+
+  <section class="screen hidden" id="doors">
+    <div class="pixelbox">
+      <div class="eyebrow">LEVEL 02 / PICK YOUR CHAOS</div><h2>CHỌN MỘT CÁNH CỬA</h2>
+      <p>Mỗi cánh cửa chứa một kiểu bất ngờ. Chọn theo trực giác đi Koala 👀</p>
+      <button class="choice" onclick="openDoor('A')">[ A ] THE CRIME SCENE — ảnh dìm kinh điển 📸</button>
+      <button class="choice" onclick="openDoor('B')">[ B ] THE MEMORY VAULT — ký ức cũ 📼</button>
+      <button class="choice" onclick="openDoor('C')">[ C ] THE ROAST FILE — hồ sơ bóc phốt 🗂️</button>
+      <div class="photo-placeholder hidden" id="doorReveal"></div>
+      <div class="actions"><button id="doorsNext" onclick="go('stats',3)" disabled>UNLOCK NEXT LEVEL →</button></div>
+    </div>
+  </section>
+
+  <section class="screen hidden" id="stats">
+    <div class="pixelbox">
+      <div class="eyebrow">LEVEL 03 / FRIENDSHIP DATA</div><h2>SÓC × KOALA: REPORT</h2>
+      <p>Thống kê tình bạn — dữ liệu do Sóc tự biên soạn, nhưng độ đáng tin cậy thì khỏi bàn.</p>
+      <div class="stats">
+        <div class="stat"><strong>∞</strong> Số chuyện để kể</div>
+        <div class="stat"><strong>999+</strong> Lần cười nhảm</div>
+        <div class="stat"><strong>TOP 1</strong> Đồng bọn của Sóc</div>
+        <div class="stat"><strong>100%</strong> Không thể thay thế</div>
+      </div>
+      <hr class="hr">
+      <label for="memory">Điền một kỷ niệm mà Koala nhớ nhất:</label>
+      <textarea id="memory" rows="3" placeholder="Gõ câu trả lời ở đây..."></textarea>
+      <p class="small">Phần này chỉ hiện trên thiết bị của người chơi trong lúc mở trang; câu trả lời không tự gửi về cho Sóc.</p>
+      <div class="photo-placeholder">[ PLACEHOLDER ALBUM ẢNH ]<br>Thay bằng ảnh hoặc ảnh ghép của hai đứa</div>
+      <div class="actions"><button onclick="go('letter',4)">OPEN FINAL FILE →</button></div>
+    </div>
+  </section>
+
+  <section class="screen hidden" id="letter">
+    <div class="pixelbox">
+      <div class="eyebrow">FINAL LEVEL / PRIVATE MESSAGE</div><h2>FILE: THINGS I DON'T SAY OFTEN</h2>
+      <p>Koala thân mến,</p>
+      <p>Chúc mừng sinh nhật Phương Uyênnn 🐨💙</p>
+      <p>Tao mong tuổi mới sẽ đem đến cho mày thật nhiều điều đáng mong chờ, nhiều niềm vui nhỏ xíu mà chân thành, và đủ can đảm để thử những điều mày vẫn luôn muốn làm.</p>
+      <p>Cảm ơn mày vì đã trở thành một phần trong những kỷ niệm của Sóc. Có những chuyện lúc xảy ra thì bình thường thôi, nhưng nghĩ lại mới thấy vui vì người ở trong những khoảnh khắc đó là mày.</p>
+      <p>Tao không biết sau này tụi mình sẽ bận rộn đến đâu hay cuộc sống thay đổi thế nào, nhưng tao hy vọng mình vẫn sẽ luôn có những câu chuyện ngớ ngẩn để kể nhau nghe, và vẫn có thể vui vẻ khi nhớ về tình bạn này.</p>
+      <p>Cứ lớn lên theo cách của mày nha. Mong mày được yêu thương tử tế, làm được những điều mày muốn, và nhớ là có một con Sóc luôn cổ vũ cho con Koala này đó. 💙</p>
+      <p><b>Happy birthday, Koala. Friendship status: FOREVER LOADING... ∞</b></p>
+      <hr class="hr">
+      <label for="letterExtra">[ Sóc có thể thêm lời nhắn riêng ở đây trước khi gửi website ]</label>
+      <textarea id="letterExtra" rows="3" placeholder="Một kỷ niệm hoặc lời nhắn chỉ hai đứa hiểu..."></textarea>
+      <div class="actions"><button onclick="go('gift',5)">UNLOCK SECRET GIFT 🎁</button></div>
+    </div>
+  </section>
+
+  <section class="screen hidden" id="gift">
+    <div class="pixelbox center">
+      <div class="eyebrow">BONUS STAGE / ACHIEVEMENT UNLOCKED</div>
+      <div class="pixel-art">🎁 ✨ 🌌</div>
+      <h2>YOU DID IT, KOALA!</h2>
+      <p>Toàn bộ nhiệm vụ đã hoàn thành.</p>
+      <p>Phần thưởng cuối cùng đang chờ mày nè.</p>
+      <div class="photo-placeholder">[ PLACEHOLDER QUÀ BÍ MẬT ]<br>Thay bằng ảnh quà, lời mời đi chơi hoặc voucher tự làm</div>
+      <p><b>SECRET GIFT:</b></p>
+      <p id="giftText">Một buổi đi chơi với Sóc / món quà bí mật / lời hứa cho một kỷ niệm mới. (Sóc sửa phần này nha!)</p>
+      <div class="actions"><button onclick="confetti()">🎉 CLAIM REWARD</button><button class="secondary" onclick="restart()">↻ PLAY AGAIN</button></div>
+      <p class="small" id="rewardMessage"></p>
+    </div>
+  </section>
+  <footer>MADE WITH PIXELS & MEMORIES · FROM SÓC TO KOALA 💙</footer>
+</main>
+<div id="toast" class="hidden" role="status"></div>
+<script>
+const questions = [
+ {q:"Câu 1: Lần đầu hai đứa thân hơn là nhờ chuyện gì?", choices:["Một vụ drama trời ơi đất hỡi","Một lần học/làm chung","Một tình huống không ai ngờ"], answer:0, note:"Sửa lựa chọn và đáp án trong mảng questions ở cuối file nhé."},
+ {q:"Câu 2: Biệt danh của người chơi là gì?", choices:["Koala 🐨","Cá nóc 🐡","Mèo mun 🐈‍⬛"], answer:0, note:"Đúng rồi, Koala là Koala!"},
+ {q:"Câu 3: Ai là đồng bọn chính thức của Koala?", choices:["Sóc 🐿️","Một con cá","Hệ điều hành Windows"], answer:0, note:"Một đáp án quá dễ với người chơi này."}
+];
+let qi=0, answered=false, completed=0;
+function go(id,step){document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.getElementById('progressBar').style.width=(step/5*100)+'%';window.scrollTo({top:0,behavior:'smooth'});if(id==='quiz')renderQuestion();}
+function renderQuestion(){answered=false;document.getElementById('nextQ').disabled=true;document.getElementById('quizFeedback').textContent='';let q=questions[qi];let area=document.getElementById('questionArea');area.innerHTML='<h3>QUESTION '+(qi+1)+' / '+questions.length+'</h3><p>'+q.q+'</p>';q.choices.forEach((c,i)=>{let b=document.createElement('button');b.className='choice';b.textContent=String.fromCharCode(65+i)+'. '+c;b.onclick=()=>answer(i);area.appendChild(b);});}
+function answer(i){if(answered)return;answered=true;let q=questions[qi];document.querySelectorAll('#questionArea button').forEach(b=>b.disabled=true);let ok=i===q.answer;document.getElementById('quizFeedback').textContent=ok?'✓ CORRECT! MEMORY RESTORED. 💙':'✦ Đã ghi nhận đáp án! Hỏi Sóc xem đáp án chuẩn nha 😆';document.getElementById('nextQ').disabled=false;document.getElementById('nextQ').textContent=qi===questions.length-1?'OPEN NEXT LEVEL →':'NEXT QUESTION →';}
+function nextQuestion(){if(qi<questions.length-1){qi++;renderQuestion()}else{go('doors',2)}}
+function openDoor(which){let content={A:'📸 THE CRIME SCENE<br><br>[ THAY BẰNG ẢNH DÌM CỦA HAI ĐỨA ]<br>Chú thích: “Bằng chứng không thể chối cãi.”',B:'📼 THE MEMORY VAULT<br><br>[ THAY BẰNG ẢNH / SCREENSHOT KỶ NIỆM ]<br>Chú thích: “Mày còn nhớ ngày này không?”',C:'🗂️ THE ROAST FILE<br><br>HỒ SƠ KOALA: đáng yêu nhưng hay báo đời; độ thân thiết với Sóc: không thể cứu chữa. [ SỬA THÀNH CÂU ĐÙA RIÊNG CỦA HAI ĐỨA ]'};let el=document.getElementById('doorReveal');el.innerHTML=content[which];el.classList.remove('hidden');document.getElementById('doorsNext').disabled=false;}
+function confetti(){document.getElementById('rewardMessage').textContent='🎉 ACHIEVEMENT UNLOCKED: BEST FRIEND FOREVER. Chụp màn hình này lại nha, Koala!';toast('REWARD CLAIMED 💙');}
+function restart(){qi=0;go('welcome',0)}
+function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),2200)}
+</script>
+</body>
+</html>
